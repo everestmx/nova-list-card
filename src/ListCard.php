@@ -83,6 +83,12 @@ class ListCard extends Card
         return $this;
     }
 
+    public function where()
+    {
+
+        return $this;
+    }
+
     /**
      * @param $column
      * @param string $direction
@@ -235,7 +241,6 @@ class ListCard extends Card
         return array_merge([
             'limit' => $this->limit,
             'uri_key' => $this->uriKey(),
-            // 'uri_key' => $this->resource::uriKey(),
             'relationship' => $this->relationship,
             'aggregate' => $this->aggregate,
             'aggregate_column' => $this->aggregateColumn,

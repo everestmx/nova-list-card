@@ -3,8 +3,12 @@
 namespace DummyNamespace;
 
 use App\Nova\User;
-use NovaListCard\ListCard;
+use Everestmx\NovaListCard\ListCard;
 
+/**
+ * Class RecentProjects
+ * @package App\Nova\Metrics
+ */
 class DummyClass extends ListCard
 {
     /**

@@ -1,17 +1,11 @@
 <template>
-  <div :id="card.uri_key" :class="'nova-list-card' + card.classes + ' p-8 bg-white relative'">
-    <div
-      class="nova-list-card-heading flex border-b pb-2 mb-2 border-50"
-      v-if="card.heading.length != 0"
-    >
-      <div class="truncate left" :class="{'w-3/4': card.heading.right}">{{ card.heading.left }}</div>
+  <div :id="card.uri_key" :class="'nova-list-card' + card.classes + ' px-6 py-4 card relative'">
+    <div class="nova-list-card-heading flex pb-2" v-if="card.heading.length != 0">
+      <div class="mr-3 text-base text-80 font-bold" :class="{'w-3/4': card.heading.right}">{{ card.heading.left }}</div>
       <div class="w-1/4 truncate right" v-if="card.heading.right">{{ card.heading.right }}</div>
     </div>
     <div class="nova-list-card-body relative">
-      <div
-        v-if="!loading && items.length == 0"
-        class="text-center text-base text-80 font-normal mb-6 pt-8"
-      >
+      <div v-if="!loading && items.length == 0" class="text-center text-base text-80 font-normal mb-6 pt-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="65"
@@ -47,17 +41,10 @@
           :class="'nova-list-card-item-'+(index + 1)"
         >
           <div class="flex py-1">
-            <div
-              :class="{'w-full': card.value_column == null, 'w-3/4 pr-4': card.value_column != null}"
-            >
-              <p
-                class="nova-list-card-title truncate no-underline dim text-primary font-bold"
-              >{{ item.title }}</p>
+            <div :class="{'w-full': card.value_column == null, 'w-3/4 pr-4': card.value_column != null}">
+              <p class="nova-list-card-title truncate no-underline dim text-primary font-bold">{{ item.title }}</p>
               <p class="nova-list-card-subtitle text-80 truncate pr-4" v-if="card.subtitle_enabled">
-                <span
-                  class="pb-2"
-                  v-if="card.subtitle_column"
-                >{{ item.resource[card.subtitle_column] }}</span>
+                <span class="pb-2" v-if="card.subtitle_column">{{ item.resource[card.subtitle_column] }}</span>
                 <span class="pb-2" v-else-if="item.subTitle">{{ item.subTitle }}</span>
               </p>
               <p
@@ -75,17 +62,13 @@
             >{{ formatValue(item, card.value_format) }}</div>
           </div>
         </router-link>
-        <div
-          v-if="card.footer_link_type"
-          class="nova-list-card-footer-link border-t border-50 mt-4"
-        >
+        <div v-if="card.footer_link_type" class="nova-list-card-footer-link mt-4">
           <router-link
             v-if="card.footer_link_type != 'href' && items.length == card.limit"
             :to="{ name: card.footer_link_type, params: card.footer_link_params}"
             class="cursor-pointer text-80 no-underline py-3 font-bold block dim"
             v-html="card.footer_link_text"
           />
-
           <a
             class="cursor-pointer text-80 no-underline py-3 font-bold block dim"
             v-if="card.footer_link_type == 'href'"
@@ -102,9 +85,6 @@
 .nova-list-card {
   height: auto;
   min-height: 150px;
-}
-.nova-list-card-body {
-  min-height: 100px;
 }
 .nova-list-card.zebra .nova-list-card-item:nth-child(even) {
   background-color: var(--20);

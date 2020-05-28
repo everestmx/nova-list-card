@@ -25,7 +25,9 @@ class ResourceController extends Controller
 
         $card = collect(Nova::$cards)
             ->filter(function ($card) use ($key) {
-                return $card->uriKey() == $key;
+                if (method_exists($card, 'uriKey')) {
+                    return $card->uriKey() == $key;
+                }
             })->first();
 
         $resource = $card->resource;
